@@ -20,6 +20,7 @@ public class WeatherController {
 //        Response response = weatherService.getForecast("78746");
 //        model.addAttribute("data", response);
         model.addAttribute("request", new Request());
+        model.addAttribute("searches", weatherService.getLast10ZipCode());
 
         return "index";
     }
@@ -27,6 +28,7 @@ public class WeatherController {
     public String postIndex(Request request, Model model) {
         Response data = weatherService.getForecast(request.getZipCode());
         model.addAttribute("data", data);
+        model.addAttribute("searches", weatherService.getLast10ZipCode());
         return "index";
     }
 }
